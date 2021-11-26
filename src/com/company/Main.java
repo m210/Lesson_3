@@ -6,15 +6,19 @@ public class Main {
     private static final int AndroidOS = 1;
 
     public static void main(String[] args) {
-        task1(AndroidOS);
+//        task1(AndroidOS);
+//
+//        task2(iOS, 2012);
+//
+//        task3(2022);
+//
+//        task4(95);
+//
+//        task5(12);
 
-        task2(iOS, 2012);
+        task6(19, 58000);
 
-        task3(2022);
-
-        task4(95);
-
-        task5(12);
+        task7(25, 60000, 330_000);
     }
 
     public static void task1(int clientOS) {
@@ -100,5 +104,36 @@ public class Main {
         }
     }
 
+    public static void task6(int age, int salary) {
+        float limit = 2;
+        if(age >= 23)
+            limit = 3;
+        if(salary >= 80_000)
+            limit *= 1.5f;
+        else if(salary >= 50_000)
+            limit *= 1.2f;
 
+        System.out.println("Мы готовы выдать Вам кредитную карту с лимитом " + (limit * salary));
+    }
+
+    public static void task7(int age, int salary, int wantedSum) {
+        float bet = 10; // %
+        if(age < 23)
+            bet++;
+        else if(age < 30)
+            bet += 0.5f;
+        if(salary > 80_000)
+            bet -= 0.7;
+
+        int maxPay = salary * 50 / 100;
+        float payPerMonth = wantedSum / 12;
+        payPerMonth += payPerMonth * bet / 100;
+
+        System.out.println("Максимальный платеж при ЗП " + salary + " рублей равен " + maxPay + " рублей.");
+        System.out.println("Платеж по кредиту " + payPerMonth + " рублей в месяц");
+
+        if(maxPay > payPerMonth)
+            System.out.println("Одобрено");
+        else System.out.println("Отказано");
+    }
 }
